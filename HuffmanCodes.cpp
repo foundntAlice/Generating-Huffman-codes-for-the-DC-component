@@ -294,8 +294,8 @@ int main() {
 		}
 	}
 	//subtract 128 from each pixel value
-	for (int i = 0; i < 8; i++) {
-		for (int j = 0; j < 8; j++) {
+	for (int i = 0; i < 512; i++) {
+		for (int j = 0; j < 512; j++) {
 			Y[i][j] -= 128;
 			Cb[i][j] -= 128;
 			Cr[i][j] -= 128;
