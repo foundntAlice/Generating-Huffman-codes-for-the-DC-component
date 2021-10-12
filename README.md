@@ -53,6 +53,7 @@ The __init__ function:
         self.drawer.penup() 
 ```
 There are 3 main objects, **runner**(the blue turtle), **chaser**(the red turtle) and **runner_mom**(the blue turtle's mom).
+
 The function **it_caught()** returns **True** when the chaser caught up the runner!
 ```
     def is_caught(self):
@@ -111,10 +112,15 @@ This is how the game works!
             self.canvas.ontimer(self.step, self.ai_timer_msec)
 ```
 **self.runner.run_ai(self.chaser)** helps the runner to move randomly 
+
 **self.runner_mom.mom_move(self.runner)** helps the runner's mom to be side by side with her son
+
 **self.chaser.auto_chase(self.runner, self.runner_mom)** let the chaser run automatically (not very optimal but the result is much better than manual moves)
+
 **elapse = time.time() - self.start_time** calculates the elapse time from when the game started
+
 The rest of the codes are well explained by its comments
+
 This is how the chaser can automatically run:
 ```
 class ManualMover(turtle.RawTurtle):
@@ -166,6 +172,7 @@ class ManualMover(turtle.RawTurtle):
             self.goto(x_tmp, y_tmp)
 ```
 This code brute forces 8 possible moves and chooses the best one. That is, the move get closest to the runner but also not caught by the runner's mom. There are some special numbers like 395, 465. In my local computer, the turtle graphic is displayed with the width from -465 to 465 and the height from -395 to 395. This code also prevents the cases when some turtle is out of visible screen.
+
 
 The below is how the runner and his mom move:
 ```
@@ -232,5 +239,7 @@ class RandomMover(turtle.RawTurtle):
 
 ```
 The **run_ai()** function simply makes a random move (does not sound like its name)
+
 The **mom_move()** function helps the mom to find his son quickly. When the distance between them is very far, it chooses the best move to reduce the distance. When they get closer, the mom simply moves randomly around her son.
+
 The **exceeded_margin_check()** function checks whether some turtle has been out of the screen or not, then fixed their move.
